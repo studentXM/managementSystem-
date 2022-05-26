@@ -40,3 +40,28 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 正确使用html,body{margin:0;padding:0}
 
 }
+
+
+
+路由跳转 加入了一个配置对象,可以根据对应组件的 name 进行跳转
+
+this.$router.push({
+
+​	name:变量
+
+})
+
+app里面只挂了一个 router-view 
+
+路由根路径 里面写了子路径 
+
+根路径指向的是 main.vue (公共布局)
+
+在main.vue中  头部 和侧边栏 是固定死的组件 
+
+中间的内容区 用路由管理器显示(router-view )
+
+
+
+
+

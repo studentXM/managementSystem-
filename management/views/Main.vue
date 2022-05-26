@@ -2,11 +2,19 @@
 
     <el-container style="height: 100%;">
         <el-aside width="auto">
+            <!-- 固定组件 -->
             <common-aside/>
         </el-aside>
         <el-container>
-            <el-header>Header</el-header>
-            <el-main>Main</el-main>
+            <el-header>
+                <!-- 固定组件 -->
+                <CommonHeader></CommonHeader>
+            </el-header>
+
+            <!-- 内容区使用路由管理器 来动态显示 -->
+            <el-main>
+                <router-view></router-view>
+            </el-main>
         </el-container>
     </el-container>
 
@@ -14,6 +22,7 @@
 
 <script>
 import CommonAside from '../src/components/CommonAside.vue'
+import CommonHeader from '../src/components/CommonHeader.vue'
 export default {
     name: 'VueLearningHome',
 
@@ -23,14 +32,15 @@ export default {
         };
     },
     components:{
-        CommonAside
+        CommonAside,
+        CommonHeader
     },
     mounted() {
 
     },
 
     methods: {
-        
+
     },
 };
 </script>

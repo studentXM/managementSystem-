@@ -84,6 +84,7 @@ export default {
             console.log(key, keyPath);
         },
         clickMenu(item){
+            console.log(item)
             this.$router.push({
                 name:item.name
             })
@@ -112,7 +113,8 @@ export default {
     border:none;
     h3{
         color: #fff;
-        text-align:center
+        text-align:center;
+        line-height: 48px;
     }
 }
 

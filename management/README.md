@@ -63,5 +63,32 @@ app里面只挂了一个 router-view
 
 
 
+el-table 会有一个data来绑定数组
+
+通常数组里面 会放对象
 
 
+
+el-column是列标签 它的prop 代表拿去data数组里面的某个对象的key
+
+
+
+​    <!-- 这里data绑定了 tableData数组-->
+
+​        <el-table :data="tableData">
+
+​        <!-- 下面的 prop里是传入的index会作为tableData的key -->
+
+​        <!-- label则是 每一列的标题 -->
+
+​          <el-table-column v-for="(item,index) in tableLabel" 
+
+​          :key="index" :prop="index" :label="item">
+
+​          </el-table-column>
+
+​        </el-table>
+
+列数由column决定
+
+行数由table的data中的length决定

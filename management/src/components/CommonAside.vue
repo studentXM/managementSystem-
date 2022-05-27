@@ -5,7 +5,7 @@
     active-text-color="#ffd04b"
     @open="handleOpen" @close="handleClose"
         :collapse="isCollapse">
-        <h3>通用管理系统</h3>
+        <h3>{{isCollapse?'后台':'通用管理系统'}}</h3>
         <!-- 不存在子元素的菜单 -->
         <el-menu-item v-for='item in noChildren' :index="item.path" :key="item.path" @click="clickMenu(item)">
             <i :class="'el-icon-'+item.icon" ></i>
@@ -30,7 +30,6 @@
 export default {
     data() {
         return {
-            isCollapse: false,
             menu: [
                 {
                     path: '/',
@@ -97,7 +96,12 @@ export default {
         },
         hasChildren(){
             return this.menu.filter(item => item.children) // 有子元素 则返回
-        }
+        },
+        //vuex 管理侧边栏开关 因为数据响应式 header组件更改
+        // 这个值的时候 这个数据会发生改变 同时 侧边栏根据值发生改变
+        isCollapse(){
+            return this.$store.state.tab.isCollapse
+        } 
     }
 }
 </script>

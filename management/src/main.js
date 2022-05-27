@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import {Button,Radio,Container,Aside,Main,Header,Menu,
-  Submenu,MenuItem,MenuItemGroup,Dropdown,DropdownItem,DropdownMenu} from 'element-ui'
+  Submenu,MenuItem,MenuItemGroup,Dropdown,DropdownItem,
+  DropdownMenu,Row,Col,Card} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
 import router from '../router'
-// import store from '../store'
+import store from './store'
 Vue.config.productionTip = false
 // 按需引入
 Vue.use(Button)
@@ -21,9 +22,12 @@ Vue.use(MenuItemGroup)
 Vue.use(Dropdown)
 Vue.use(DropdownItem)
 Vue.use(DropdownMenu)
+Vue.use(Row)
+Vue.use(Col)
+Vue.use(Card)
 
 new Vue({
-  // store,  
+  store,  
   router,
   render: h => h(App),
 }).$mount('#app')

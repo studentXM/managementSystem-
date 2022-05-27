@@ -1,7 +1,8 @@
 <template>
     <header>
         <div class="i-content">
-            <el-button plain icon="el-icon-menu" size="mini"></el-button>
+            <el-button plain icon="el-icon-menu" 
+            size="mini" @click="handleeMenu"></el-button>
             <h3 style="color: #fff;">首页</h3>
         </div>
         <div class="r-content">
@@ -33,7 +34,9 @@ export default {
     },
 
     methods: {
-
+        handleeMenu(){
+            this.$store.commit('collapseMenu')
+        },
     },
 };
 </script>

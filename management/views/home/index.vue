@@ -35,6 +35,13 @@
                     </div>
                 </el-card>
             </div>
+            <el-card style="height: 280px;">
+
+            </el-card>
+            <div class="graph">
+                <el-card style="height:260px"></el-card>
+                <el-card style="height:260px"></el-card>
+            </div>
         </el-col>
 
     </el-row>
@@ -134,7 +141,7 @@ export default {
     },
 
     mounted() {
-
+        
     },
 
     methods: {
@@ -178,7 +185,7 @@ export default {
         .el-card {
             width: 32%;
             flex-shrink: 0;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
             box-sizing: border-box;
             cursor: pointer;
         }
@@ -196,22 +203,31 @@ export default {
             display: flex;
             flex-direction: column;
             justify-content: space-around;
+
             p {
                 margin: 0 !important;
             }
-            .num{
+
+            .num {
                 font-size: 22px;
             }
-            .txt{
-                // color: rgb(83, 83, 83);
-                color: red;
-                font-size: 14px;
+
+            .txt {
+                color: rgb(83, 83, 83);
+                font-size: 12px;
             }
 
         }
-
     }
 
+    .graph {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+        .el-card{
+            width: 48%;
+        }
+    }
 
 
 }

@@ -49,50 +49,14 @@
 </template>
 
 <script>
+import {getData} from '../../api/data.js'
 export default {
     name: 'home',
 
     data() {
         return {
             headImg: require('../../src/assets/head.png'),
-            tableData: [
-                {
-                    name: 'oppo',
-                    todayBuy: 500,
-                    monthBuy: 3500,
-                    totalBuy: 22000
-                },
-                {
-                    name: 'vivo',
-                    todayBuy: 300,
-                    monthBuy: 2200,
-                    totalBuy: 24000
-                },
-                {
-                    name: '苹果',
-                    todayBuy: 800,
-                    monthBuy: 4500,
-                    totalBuy: 65000
-                },
-                {
-                    name: '小米',
-                    todayBuy: 1200,
-                    monthBuy: 6500,
-                    totalBuy: 45000
-                },
-                {
-                    name: '三星',
-                    todayBuy: 300,
-                    monthBuy: 2000,
-                    totalBuy: 34000
-                },
-                {
-                    name: '魅族',
-                    todayBuy: 350,
-                    monthBuy: 3000,
-                    totalBuy: 22000
-                }
-            ],
+            tableData: [],
             tableLabel: {
                 name: '课程',
                 todayBuy: '今日购买',
@@ -141,7 +105,13 @@ export default {
     },
 
     mounted() {
-        
+        getData().then(res => {
+            const {code,data} = res.data
+            if(code === 20000){
+                this.tableData = data.tableData
+            }
+            
+        })
     },
 
     methods: {
@@ -224,7 +194,8 @@ export default {
         display: flex;
         justify-content: space-between;
         margin-top: 20px;
-        .el-card{
+
+        .el-card {
             width: 48%;
         }
     }

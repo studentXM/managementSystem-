@@ -8,6 +8,9 @@ import 'element-ui/lib/theme-chalk/index.css';
 import router from '../router'
 import store from './store'
 import http from 'axios'
+import '../api/mock.js'
+
+
 Vue.config.productionTip = false
 // 按需引入
 Vue.use(Button)
@@ -29,7 +32,7 @@ Vue.use(Card)
 Vue.use(Table)
 Vue.use(TableColumn)
 
-// axios 不是插件 所以我们绑定到Vue的原型上来使用
+// axios 我们绑定到Vue的原型上来使用
 Vue.prototype.$http = http
 new Vue({
   store,  

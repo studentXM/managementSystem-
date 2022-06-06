@@ -97,3 +97,5 @@ el-column是列标签 它的prop 代表拿去data数组里面的某个对象的k
 <!-- 这个项目 axios 没有使用Vue.use  -->
 <!-- 而是绑定Vue的原型上 -->
 在 绑定vue的 main.js当中 引入axios 然后绑定到Vue原型上
+
+

@@ -23,29 +23,29 @@ export default {
             }
         }
     },
-    watch:{
-        chartData:{
-            handler:function(){
+    watch: {
+        chartData: {
+            handler: function () {
                 this.initChart()
             },
-            deep:true
+            deep: true
         }
     },
-    methods:{ 
-        initChart(){
+    methods: {
+        initChart() {
             this.initCharData()
-            if(this.echart){
+            if (this.echart) {
                 this.echart.setOption(this.options)
-            }else{
+            } else {
                 this.echart = echart.init(this.$refs.echart)
                 this.echart.setOption(this.options)
             }
         },
-        initChartData(){
-            if(this.isAxisChart){
-                this.axisOption.xAxis.data = this.chartData.xData 
+        initChartData() {
+            if (this.isAxisChart) {
+                this.axisOption.xAxis.data = this.chartData.xData
                 this.axisOption.series = this.cahrtData.series
-            }else{
+            } else {
                 this.normalOption.series = this.cahrtData.series
             }
         }
@@ -90,13 +90,15 @@ export default {
                 color: ["#2ec7c9", "#b6a2de", "#5ab1ef", "#ffb980", "#d87a80", "#8d98b3"],
                 series: []
             }
-        },
-            computed: {
-            options(){
-                return this.isAxisChart ? this.axisOption : this.normalOption
-            }
+        }
+    },
+    computed: {
+        options() {
+            return this.isAxisChart ? this.axisOption : this.normalOption
         }
     }
+    
+}
 </script>
 
 <style lang="less" scoped>

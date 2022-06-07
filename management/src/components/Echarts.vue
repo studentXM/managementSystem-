@@ -6,9 +6,9 @@
 
 <script>
 
-import * as echart from 'echarts'
+import * as echarts from 'echarts'
 export default {
-    props: {
+    props:{
         isAxisChart: {
             type: Boolean,
             default: true,
@@ -18,38 +18,41 @@ export default {
             default() {
                 return {
                     xData: [],
-                    series
+                    series: []
                 }
             }
         }
     },
-    watch: {
-        chartData: {
-            handler: function () {
+
+    watch:{
+        chartData:{
+            handler:function(){
                 this.initChart()
-            },
-            deep: true
+            },  
+            deep:true
         }
     },
-    methods: {
-        initChart() {
-            this.initCharData()
-            if (this.echart) {
+
+    methods:{
+        initChart(){
+            this.initChartData()
+            if(this.echart){
                 this.echart.setOption(this.options)
-            } else {
-                this.echart = echart.init(this.$refs.echart)
-                this.echart.setOption(this.options)
+            }else{
+                this.echart = echarts.init(this.$refs.echart)
+                this.ecahrt.setOption(this.options)
             }
         },
-        initChartData() {
-            if (this.isAxisChart) {
-                this.axisOption.xAxis.data = this.chartData.xData
-                this.axisOption.series = this.cahrtData.series
-            } else {
-                this.normalOption.series = this.cahrtData.series
+        initChartData(){
+            if(this.isAxisChart){
+                this.axisOption.xAxis.data = this.chartData.xData;
+                this.axisOption.series = this.chartData.series
+            }else{
+                this.normalOption.series = this.chartData.series
             }
         }
     },
+
     data() {
         return {
             axisOption: {
@@ -57,6 +60,7 @@ export default {
                 textStyle: {
                     color: "#333",
                 },
+
                 grid: {
                     left: "20%",
                 },
@@ -88,16 +92,34 @@ export default {
                     },
                 ],
                 color: ["#2ec7c9", "#b6a2de", "#5ab1ef", "#ffb980", "#d87a80", "#8d98b3"],
-                series: []
-            }
+                series: [],
+            },
+            // 饼状
+            normalOption: {
+                tooltip: {
+                    trigger: "item",
+                },
+                color: [
+                    "#0f78f4",
+                    "#dd536b",
+                    "#9462e5",
+                    "#a6a6a6",
+                    "#e1bb22",
+                    "#39c362",
+                    "#3ed1cf",
+                ],
+                series: [],
+            },
+            echart:null
         }
     },
+
     computed: {
         options() {
             return this.isAxisChart ? this.axisOption : this.normalOption
         }
     }
-    
+
 }
 </script>
 

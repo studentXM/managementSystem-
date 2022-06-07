@@ -36,15 +36,17 @@
                 </el-card>
             </div>
             <el-card style="height: 280px;">
-                <div style="height:280px" ref="echarts">
-                </div>
+                <div style="height: 280px;" ref="echarts"></div>
+                 <!-- <echart :chartData="echartData.order" style="height: 280px;" /> -->
             </el-card>
             <div class="graph">
                 <el-card style="height:260px">
                     <div style="height: 240px;" ref="userEcharts"></div>
+                    <!-- <echart :chartData="echartData.user" style="height: 240px;" /> -->
                 </el-card>
                 <el-card style="height:260px">
-                    <div style="height: 260px;" ref="pieEcharts"></div>
+                    <div style="height: 240px;" ref="pieEcharts" ></div>
+                    <!-- <echart :chartData="echartData.video" :isAxisChart="false" style="height: 240px;" /> -->
                 </el-card>
             </div>
         </el-col>
@@ -56,9 +58,12 @@
 <script>
 import { getData } from '../../api/data.js'
 import * as echarts from 'echarts'
+// import Echart from '../../src/components/Echarts.vue'
 export default {
     name: 'home',
-
+    components:{
+        // Echart
+    },
     data() {
         return {
             headImg: require('../../src/assets/head.png'),
@@ -107,6 +112,19 @@ export default {
                     color: "#5ab1ef",
                 },
             ],
+            echartData:{
+                order:{
+                    xData:[],
+                    series:[]
+                },
+                user:{
+                    xData:[],
+                    series:[]
+                },
+                video:{
+                    series:[]
+                }
+            }
         };
     },
 
@@ -136,6 +154,9 @@ export default {
                     },
                     series
                 }
+                
+                // this.echartData.order.xData = xData
+                // this.echartData.order.series = series
 
                 const E = echarts.init(this.$refs.echarts)
                 E.setOption(option)
@@ -195,6 +216,20 @@ export default {
 
                 const U = echarts.init(this.$refs.userEcharts)
                 U.setOption(userOption)
+                                
+                // this.echartData.user.xData =  data.userData.map(item => item.date)
+                // this.echartData.user.series =  [
+                //         {
+                //             name: '新增用户',
+                //             date: data.userData.map(item => item.new),
+                //             type: 'bar'
+                //         },
+                //         {
+                //             name: '活跃用户',
+                //             data: data.userData.map(item => item.active),
+                //             type: 'bar'
+                //         }
+                //     ]
 
                 // 饼图
                 const videoOption = {
@@ -218,6 +253,12 @@ export default {
                     ],
                 }
                  echarts.init(this.$refs.pieEcharts).setOption(videoOption)
+                //  this.echartData.video.series = [
+                //         {
+                //             data:data.videoData,
+                //             type:'pie'
+                //         }
+                //     ]
 
 
             }

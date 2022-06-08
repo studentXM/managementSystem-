@@ -9,10 +9,12 @@
 import * as echarts from 'echarts'
 export default {
     props:{
+        // 辨别是否 为饼图 父组件传递false就为饼图
         isAxisChart: {
             type: Boolean,
             default: true,
         },
+        // 父组件传递的数据
         chartData: {
             type: Object,
             default() {
@@ -23,13 +25,14 @@ export default {
             }
         }
     },
-
+    // 因为这里的值 被父组件传递数据并修改了 所以开始执行
     watch:{
         chartData:{
             handler:function(){
                 this.initChart()
             },  
-            deep:true
+            deep:true,
+            
         }
     },
 
@@ -40,9 +43,10 @@ export default {
                 this.echart.setOption(this.options)
             }else{
                 this.echart = echarts.init(this.$refs.echart)
-                this.ecahrt.setOption(this.options)
+                this.echart.setOption(this.options)
             }
         },
+        // 把父传子的数据进行赋值
         initChartData(){
             if(this.isAxisChart){
                 this.axisOption.xAxis.data = this.chartData.xData;
@@ -70,6 +74,7 @@ export default {
                 },
                 xAxis: {
                     type: "category", // 类目轴
+                    // 接受外部传递
                     data: [],
                     axisLine: {
                         lineStyle: {

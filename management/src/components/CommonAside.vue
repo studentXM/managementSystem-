@@ -7,7 +7,8 @@
         :collapse="isCollapse">
         <h3>{{isCollapse?'后台':'通用管理系统'}}</h3>
         <!-- 不存在子元素的菜单 -->
-        <el-menu-item v-for='item in noChildren' :index="item.path" :key="item.path" @click="clickMenu(item)">
+        <el-menu-item v-for='item in noChildren' :index="item.path" :key="item.path" 
+        @click="clickMenu(item)">
             <i :class="'el-icon-'+item.icon" ></i>
             <span slot="title">{{ item.label }}</span>
         </el-menu-item>
@@ -17,8 +18,10 @@
                     <i :class='"el-icon-"+item.icon'></i>
                     <span slot="title">{{item.label}}</span>
                 </template>
-                <el-menu-item-group v-for="child in item.children" :key="child.path">
-                    <el-menu-item :index="child.path">{{child.label}}</el-menu-item>
+                <el-menu-item-group v-for="(child,subItem) in item.children" 
+                :key="child.path">
+                    <el-menu-item :index="subItem.toString()" @click="clickMenu(child)">
+                    {{child.label}}</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
     </el-menu>

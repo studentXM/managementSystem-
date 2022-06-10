@@ -41,7 +41,6 @@ export default {
         },
         handleClose(tag,index) {
             console.log(tag)
-            
             const length = this.tags.length - 1;
             this.close(tag)
             if(tag.name !== this.$route.name){

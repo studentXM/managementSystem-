@@ -1,8 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import {Button,Radio,Container,Aside,Main,Header,Menu,
-  Submenu,MenuItem,MenuItemGroup,Dropdown,DropdownItem,
-  DropdownMenu,Row,Col,Card,Table,TableColumn,Breadcrumb,BreadcrumbItem,Tag} from 'element-ui'
+import {
+  Button, Radio, Container, Aside, Main, Header, Menu,
+  Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownItem,
+  DropdownMenu, Row, Col, Card, Table, TableColumn, Breadcrumb,
+   BreadcrumbItem,Tag,Form,FormItem,Input,Select,Switch,DatePicker,Option,
+   Dialog
+} from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
 import router from '../router'
@@ -34,10 +38,19 @@ Vue.use(TableColumn)
 Vue.use(Breadcrumb)
 Vue.use(BreadcrumbItem)
 Vue.use(Tag)
+Vue.use(Form)
+Vue.use(FormItem)
+Vue.use(Input)
+Vue.use(Select)
+Vue.use(Switch)
+Vue.use(DatePicker)
+Vue.use(Option)
+Vue.use(Dialog)
+
 // axios 我们绑定到Vue的原型上来使用
 Vue.prototype.$http = http
 new Vue({
-  store,  
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

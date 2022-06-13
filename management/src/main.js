@@ -5,7 +5,7 @@ import {
   Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownItem,
   DropdownMenu, Row, Col, Card, Table, TableColumn, Breadcrumb,
    BreadcrumbItem,Tag,Form,FormItem,Input,Select,Switch,DatePicker,Option,
-   Dialog
+   Dialog,Pagination
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -46,6 +46,7 @@ Vue.use(Switch)
 Vue.use(DatePicker)
 Vue.use(Option)
 Vue.use(Dialog)
+Vue.use(Pagination)
 
 // axios 我们绑定到Vue的原型上来使用
 Vue.prototype.$http = http

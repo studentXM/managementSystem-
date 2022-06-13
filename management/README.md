@@ -81,7 +81,7 @@ el-column是列标签 它的prop 代表拿去data数组里面的某个对象的k
 
 ​        <!-- label则是 每一列的标题 -->
 
-​          <el-table-column v-for="(item,index) in tableLabel" 
+​          <el-table-column v-for="(item, index) in tableLabel" 
 
 ​          :key="index" :prop="index" :label="item">
 
@@ -106,3 +106,37 @@ axios请求到的数据 通过父子通信 传输给 echarts 组件
 
 <!-- 面包屑通过vuex 来保持同步 -->
 用到了 vuex 的两个辅助函数
+
+<!-- 用户管理 -->
+添加数据的 弹窗里面的 表单元素 使用 form包裹 然后v-for循环出来的 父组件传递给子组件 类型 子组件 根据类型 渲染对应 表单元素 
+这里它循环的是 外层 from标签 没有直接循环input 一个form 只显示一个input 
+
+<!-- 组件 v-model -->
+把子组件的表单数据  通过自定义事件发送给父组件 接受数据的组件 用v-on(@)来接受 
+数据 事件名和 emit 发送时 定义的 事件名 一致
+<div>
+<input type="text" :value="value" @input="handle">
+</div>
+<!-- 数据 -->
+props:[
+'value'
+],
+methods: {
+    handle(e){
+        console.log(e.target.value)
+        this.$emit('diychange',e.target.value)
+    }
+},
+<!-- 接受 -->
+<ty :value="mess" @diychange="test"></ty>
+
+
+<!-- 自定义组件 v-model -->
+v-model 默认是 input事件和 v-bind绑定
+如果表单是 非text输入框 的时候 (如checkbox radio)
+就需要用到 自定义v-model 只需要在子组件 
+写入
+model:{
+    prop:'值的方式 checkbox 或者 radio select 等等',
+    event:'事件方式 change 或者其他',
+}

@@ -18,6 +18,7 @@ export default {
 <style>
 #app {
   height: 100vh;
+  background: #f6f6f6;
 }
 html,body{
   margin: 0;

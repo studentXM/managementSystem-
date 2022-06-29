@@ -5,7 +5,7 @@ import {
   Submenu, MenuItem, MenuItemGroup, Dropdown, DropdownItem,
   DropdownMenu, Row, Col, Card, Table, TableColumn, Breadcrumb,
    BreadcrumbItem,Tag,Form,FormItem,Input,Select,Switch,DatePicker,Option,
-   Dialog,Pagination
+   Dialog,Pagination,MessageBox,Message
 } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
@@ -49,7 +49,24 @@ Vue.use(Dialog)
 Vue.use(Pagination)
 
 // axios 我们绑定到Vue的原型上来使用
-Vue.prototype.$http = http
+Vue.prototype.$http = http;
+Vue.prototype.$confirm = MessageBox.confirm;
+Vue.prototype.$message = Message
+
+// 导航守卫
+router.beforeEach((to,from,next) => {
+    store.commit('getToken')
+    const token = store.state.user.token
+    if(!token && to.name != 'login'){
+      next({
+        name:'login'
+      })
+    }else{
+      next()
+    }
+})
+
+
 new Vue({
   store,
   router,
